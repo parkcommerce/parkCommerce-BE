@@ -1,4 +1,4 @@
-package com.commerce.parkcommerce.domain.member;
+package com.commerce.parkcommerce.domain.member.entity;
 
 import jakarta.persistence.Embeddable;
 import lombok.AccessLevel;

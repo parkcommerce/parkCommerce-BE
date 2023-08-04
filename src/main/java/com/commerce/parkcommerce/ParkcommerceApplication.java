@@ -9,5 +9,4 @@ public class ParkcommerceApplication {
     public static void main(String[] args) {
         SpringApplication.run(ParkcommerceApplication.class, args);
     }
-
 }

@@ -1,0 +1,40 @@
+package com.commerce.parkcommerce.global.security;
+
+
+import com.commerce.parkcommerce.domain.member.entity.Member;
+import com.commerce.parkcommerce.domain.member.MemberService;
+import lombok.RequiredArgsConstructor;
+import org.springframework.security.oauth2.client.userinfo.DefaultOAuth2UserService;
+import org.springframework.security.oauth2.client.userinfo.OAuth2UserRequest;
+import org.springframework.security.oauth2.core.OAuth2AuthenticationException;
+import org.springframework.security.oauth2.core.user.OAuth2User;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import java.util.Map;
+
+@Service
+@RequiredArgsConstructor
+@Transactional(readOnly = true)
+public class CustomOAuth2UserService extends DefaultOAuth2UserService {
+    private final MemberService memberService;
+
+    @Override
+    public OAuth2User loadUser(OAuth2UserRequest userRequest) throws OAuth2AuthenticationException {
+        OAuth2User oAuth2User = super.loadUser(userRequest);
+        String oauthId = oAuth2User.getName();
+        String providerType = userRequest.getClientRegistration().getRegistrationId().toUpperCase();
+        String username = providerType + "%s".formatted(oauthId);
+        Map<String, Object> userAttributes = oAuth2User.getAttributes();
+
+        String email = null;
+        if (userAttributes.containsKey("kakao")) {
+            Map<String , Object> kakaoAccount = (Map<String, Object>) userAttributes.get("kakao_account");
+            if (kakaoAccount.containsKey("email")) {
+                email = (String) kakaoAccount.get("email");
+            }
+        }
+        Member member = memberService.socialLogin(providerType, username, email);
+        return new CustomOAuth2User(member.getName(), member.getPassword(), member.grantedAuthorities());
+    }
+}
