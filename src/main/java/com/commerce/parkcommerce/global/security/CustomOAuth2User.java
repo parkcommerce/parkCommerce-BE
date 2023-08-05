@@ -24,6 +24,6 @@ public class CustomOAuth2User extends User implements OAuth2User {
 
     @Override
     public String getName() {
-        return null;
+        return getUsername();
     }
 }
