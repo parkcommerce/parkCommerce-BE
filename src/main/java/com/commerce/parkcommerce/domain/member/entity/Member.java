@@ -1,10 +1,12 @@
 package com.commerce.parkcommerce.domain.member.entity;
 
+import com.commerce.parkcommerce.common.BaseEntity;
 import com.commerce.parkcommerce.domain.member.Role;
 import com.commerce.parkcommerce.domain.member.dto.CreateMemberDto;
 import com.commerce.parkcommerce.domain.order.Orders;
 import jakarta.persistence.*;
 import lombok.*;
+import lombok.experimental.SuperBuilder;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 
@@ -19,13 +21,9 @@ import static lombok.AccessLevel.PROTECTED;
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor(access = PROTECTED)
-@Builder(toBuilder = true)
+@SuperBuilder(toBuilder = true)
 @Getter
-public class Member {
-
-    @Id
-    @GeneratedValue(strategy = IDENTITY)
-    private long id;
+public class Member extends BaseEntity {
 
     private String name;
     private String password;

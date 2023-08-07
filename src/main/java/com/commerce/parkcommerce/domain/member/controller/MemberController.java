@@ -8,6 +8,7 @@ import org.springframework.core.io.Resource;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
 @Slf4j
@@ -18,6 +19,11 @@ public class MemberController {
 
     @GetMapping("/")
     public String test() {
+        return "member/index";
+    }
+
+    @PostMapping("/login")
+    public String login() {
         return "member/index";
     }
 }
