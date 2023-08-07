@@ -1,4 +1,4 @@
-package com.commerce.parkcommerce.global.error;
+package com.commerce.parkcommerce.global.error.exception;
 
 public class NotFoundException extends RuntimeException {
     public NotFoundException(String message) {

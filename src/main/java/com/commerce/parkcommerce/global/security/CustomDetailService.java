@@ -2,7 +2,7 @@ package com.commerce.parkcommerce.global.security;
 
 import com.commerce.parkcommerce.domain.member.entity.Member;
 import com.commerce.parkcommerce.domain.member.repository.MemberRepository;
-import com.commerce.parkcommerce.global.error.NotFoundException;
+import com.commerce.parkcommerce.global.error.exception.NotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;

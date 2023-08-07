@@ -1,4 +1,4 @@
-package com.commerce.parkcommerce.global.security;
+package com.commerce.parkcommerce.global.security.oauth2;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.User;
