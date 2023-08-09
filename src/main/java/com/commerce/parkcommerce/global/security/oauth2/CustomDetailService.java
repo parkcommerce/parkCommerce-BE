@@ -1,4 +1,4 @@
-package com.commerce.parkcommerce.global.security;
+package com.commerce.parkcommerce.global.security.oauth2;
 
 import com.commerce.parkcommerce.domain.member.entity.Member;
 import com.commerce.parkcommerce.domain.member.repository.MemberRepository;

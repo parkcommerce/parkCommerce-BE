@@ -9,12 +9,15 @@ spring:
         registration:
           kakao:
             client-id: 9c161ea6340d14b2d2d3ecf4fa137799 #ENC(omaGmE7htpmRMVp4hYt9eDferYPwIT9TVv29wNVaKI+40NlRkQexW3+22h1qS6il)
+            client-secret: T12pO89LprdseSqBwKCL1kcwEUHqGhr5
             client-name: kakao
             authorization-grant-type: authorization_code
-            redirect-uri: http://localhost:8080/login/oauth2/code/kakao
-            client-authentication-method: POST
+            redirect-uri: "http://localhost:8080/login/oauth2/code/kakao"
+            client-authentication-method: client_secret_post
             provider: kakao
-            scope: profile_nickname,account_email
+            scope:
+              - profile_nickname
+              - account_email
 
         provider:
           kakao:
@@ -22,6 +25,7 @@ spring:
             authorization-uri: https://kauth.kakao.com/oauth/authorize
             token-uri: https://kauth.kakao.com/oauth/token
             user-info-uri: https://kapi.kakao.com/v2/user/me
+            jwk-set-uri: https://kauth.kakao.com/.well-known/jwks.json
             user-name-attribute: id
 
 
